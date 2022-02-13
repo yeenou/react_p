@@ -28,8 +28,16 @@ export default function Location(){
         imgSrc : path+'/img/marker3.png', 
         imgSize : new kakao.maps.Size(232,99), 
         imgPos : {offset: new kakao.maps.Point(116, 99)}, 
+    },
+    {
+      title:"지점3", 
+      latlng : new kakao.maps.LatLng(37.557527,126.9222836),
+      imgSrc : path+'/img/marker3.png', 
+      imgSize : new kakao.maps.Size(231,99), 
+      imgPos : {offset: new kakao.maps.Point(116, 99)}, 
     }
   ]; 
+  
   const [mapInfo] = useState(info);
  
   useEffect(()=>{
@@ -80,21 +88,34 @@ export default function Location(){
         <section>
           <div id="map" ref={container}></div>
 
-          <nav className='traffic'>
-            <button onClick={()=>{
-              map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
-            }}>교통정보 보기</button>
+          <div className="wrap">
+            <nav className="branch">
+              {mapInfo.map((data, idx)=>{
+                return (
+                  <button key={idx} onClick={()=>setIndex(idx)}>
+                    <img src="" alt="" />
+                    <div className="txt">
+                      {data.title} <br />
+                      <span>Lorem, ipsum.</span>
+                      <p>Lorem ipsum dolor sit amet elit. Asperiores, sapiente.</p>
+                    </div>
+                  </button>
+                )
+              })}
+            </nav>
             
-            <button onClick={()=>{
-              map.removeOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
-            }}>교통정보 끄기</button>
-          </nav>
+            <nav className='traffic'>
+              <button onClick={()=>{
+                map.addOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
+              }}>교통정보 보기</button>
+              
+              <button onClick={()=>{
+                map.removeOverlayMapTypeId(kakao.maps.MapTypeId.TRAFFIC);
+              }}>교통정보 끄기</button>
+            </nav>
+          </div>
 
-          <nav className="branch">
-            {mapInfo.map((data, idx)=>{
-              return <button key={idx} onClick={()=>setIndex(idx)}>{data.title}</button>
-            })}
-          </nav>
+          
         </section>
       </div>
     </main>
