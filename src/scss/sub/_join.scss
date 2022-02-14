@@ -4,17 +4,19 @@
 
 
 .join{
-  //background: #efefef;
+  //background: #aaa;
 
   .inner{
-    // 
 
     h1{ margin-bottom: 200px; }
+
     section{
       width: 100%;
       display: flex;
-
-      border: 1px solid red;
+      border-radius: 30px;
+      box-shadow:10px 10px 20px rgba(0, 0, 0, 0.2);
+      
+      position: relative;
 
       .pic{
         width: 35%; background: #efefef; position: relative;
@@ -33,7 +35,7 @@
 
 
       form{
-        width: 65%; padding: 50px;
+        width: 65%; padding: 50px; //background: #fff;
 
         fieldset{
 
